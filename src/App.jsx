@@ -1,16 +1,32 @@
 import Account from "./Account";
 import Bonus from "./Bonus";
 
-export default function App() {
+import { useState } from "react";
+
+export default function App({ store }) {
+  const storeState = store.getState();
+
+  // bonuses
+  const [bonus, setBonus] = useState({ points: 0 });
+  const incrementBonus = () => setBonus({ points: bonus.points + 1 });
+
+  // accounts
+  const [account, setAccount] = useState({ amount: 0 });
+
+  const increment = () => setAccount({ amount: account.amount + 1 });
+  const decrement = () => setAccount({ amount: account.amount - 1 });
+
+  const incrementByAmount = (value) => setAccount({ amount: account.amount + value });
+
   return (
     <>
-      <h1>React Redux</h1>
-      <h3 className="highlight-amount">Current amount: </h3>
-      <h3 className="highlight-amount">Total Bonus: </h3>
+      <h1>Redux with React</h1>
+      <h3 className="highlight-amount">Current amount: ₹{storeState.account.amount}</h3>
+      <h3 className="highlight-amount">Total Bonus: ₹{storeState.bonus.points}</h3>
 
       <div className="compo-wrapper">
-        <Account />
-        <Bonus />
+        <Account account={account} increment={increment} incrementByAmount={incrementByAmount} decrement={decrement} />
+        <Bonus bonus={bonus} incrementBonus={incrementBonus} />
       </div>
     </>
   )

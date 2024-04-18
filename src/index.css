@@ -24,10 +24,10 @@ a:hover {
 }
 
 body {
-  margin: 0.2rem;
   display: flex;
   place-items: center;
   min-height: 100vh;
+  text-align: center;
 }
 
 h1 {

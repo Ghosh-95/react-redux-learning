@@ -1,2 +1,2 @@
-# React Redux
+# Redux with React
 
