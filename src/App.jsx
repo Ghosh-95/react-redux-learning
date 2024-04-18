@@ -6,10 +6,6 @@ import { useState } from "react";
 export default function App({ store }) {
   const storeState = store.getState();
 
-  // bonuses
-  const [bonus, setBonus] = useState({ points: 0 });
-  const incrementBonus = () => setBonus({ points: bonus.points + 1 });
-
   // accounts
   const [account, setAccount] = useState({ amount: 0 });
 
@@ -26,7 +22,7 @@ export default function App({ store }) {
 
       <div className="compo-wrapper">
         <Account account={account} increment={increment} incrementByAmount={incrementByAmount} decrement={decrement} />
-        <Bonus bonus={bonus} incrementBonus={incrementBonus} />
+        <Bonus store={store} />
       </div>
     </>
   )
