@@ -8,7 +8,7 @@ export default function reducerAccounts(state = { amount: 1 }, action) {
         case getUserAccPending:
             return { ...state, pending: true };
         case getUserAccRejected:
-            return { ...state, error: action.error, pending: true };
+            return { ...state, error: action.error, pending: false };
         case inc:
             return { amount: state.amount + 1 };
         case dec:

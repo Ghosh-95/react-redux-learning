@@ -13,14 +13,11 @@ function getUserAccount(id) {
     return async (dispatch, getState) => {
         try {
             dispatch(initUserAccPending());
-            console.log("post loading...");
 
             const { data } = await axios.get(`http://localhost:3000/accounts/${id}`);
             dispatch(initUserAccFulfilled(data.amount));
-            // console.log("posts loaded");
         } catch (error) {
             dispatch(initUserAccRejected(error.message));
-            // console.log("data fetching failed");
         }
     }
 };
