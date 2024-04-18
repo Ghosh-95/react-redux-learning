@@ -1,4 +1,4 @@
-import { getUserAccFulfilled, getUserAccPending, getUserAccRejected, inc, dec, incByAmt } from "../actions/actions";
+import { getUserAccFulfilled, getUserAccPending, getUserAccRejected, inc, dec, incByAmt, decByAmt } from "../actions/actions";
 
 export default function reducerAccounts(state = { amount: 1 }, action) {
 
@@ -14,7 +14,11 @@ export default function reducerAccounts(state = { amount: 1 }, action) {
         case dec:
             return { amount: state.amount - 1 };
         case incByAmt:
-            return { amount: state.amount + action.payload }
+            return { amount: state.amount + action.payload };
+        case decByAmt:
+            if (action.payload < state.amount) {
+                return { amount: state.amount - action.payload };
+            };
         default:
             return state;
     };
