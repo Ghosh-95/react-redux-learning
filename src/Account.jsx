@@ -10,7 +10,7 @@ export default function Account() {
     return (
         <div className="account-wrapper">
             <h4 className="head-point">Account Component</h4>
-            <p className="highlight-amount">Amount: ${amount}</p>
+            <p className="highlight-amount">Amount: ₹{amount}</p>
             <button onClick={() => dispatch(increment())}>Increment</button>
             <input
                 onChange={(e) => setValue(+e.target.value)} onKeyDown={(e) => e.key === "Enter" && dispatch(incrementByAmt(value))}
